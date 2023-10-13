@@ -1,3 +1,17 @@
+# macOS debris
+.DS_Store
+
+# virtualenv
+.venv/
+
+__pycache__/
+*.pyc
+pyvenv.cfg
+
+# visual studio
+.vscode
+
+# data
 data/pre_processed/Preprocessed_BigMart.csv
 data/predictions/Predicted_BigMart.csv
 model/pickle_model.pkl
