@@ -1,5 +1,5 @@
-# macOS debris
 .DS_Store
+../.DS_Store
 
 # virtualenv
 .venv/
