@@ -15,7 +15,7 @@ Seguimos la recomendación del enunciado del trabajo práctico, y respetamos tod
 
 1. **train_pipeline.py**: Entrena el modelo, y se divide a su vez en dos pasos:
   * **feature_engineering**: Hace una preparación de los datos.
-  * **train.py**: Utiliza los datos preparados previamente para entrar un modelo y lo almacena seralizado en formato _pkl_
+  * **train.py**: Utiliza los datos preparados previamente para entrenar un modelo y lo almacena seralizado en formato _pkl_
 2. **inference_pipeline.py**: Permite calcular predicciones para nuevos datos, y se también divide en dos pasos:
   * **feature_engineering.py**: Limpiamos los datos de entrada antes de aplicar el modelo.
   * **predict.py**: Calcula predicciones a partir de un dataset.
