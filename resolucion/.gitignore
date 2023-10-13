@@ -1,1 +1,3 @@
 data/pre_processed/Preprocessed_BigMart.csv
+data/predictions/Predicted_BigMart.csv
+model/pickle_model.pkl
