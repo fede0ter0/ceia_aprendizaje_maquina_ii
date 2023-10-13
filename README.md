@@ -48,7 +48,7 @@ Tenemos que pasar como parámetros:
 ```
 -itr: Es el input path del dataset de training.
 -ite: Es el input path del dataset de testing.
--o: Es el ouput path a la carpeta pre_preocessed.
+-o: Es el path a la carpeta pre_preocessed.
 -m: Es el path del modelo serializado en formato .pkl.
 ```
 
