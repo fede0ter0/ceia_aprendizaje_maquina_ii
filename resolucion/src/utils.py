@@ -1,13 +1,18 @@
-import logging, sys, time
+import logging
+import sys
+import time
+
 
 class logutils_UTCFormatter(logging.Formatter):
     converter = time.gmtime
+
 
 logutils_terse_formatter = logutils_UTCFormatter(
     fmt='{levelname:1.1s} {asctime:s}.{msecs:03.0f}Z [{name:s}] {message:s}',
     datefmt='%H:%M:%S',
     style='{',
 )
+
 
 def make_logger(logger_name):
     logger = logging.getLogger(logger_name)

@@ -27,6 +27,7 @@ import pickle
 
 logger = u.make_logger(__name__)
 
+
 class ModelTrainingPipeline(object):
 
     def __init__(self, input_path, model_path):
@@ -34,17 +35,16 @@ class ModelTrainingPipeline(object):
         self.model_path = model_path
 
     def read_data(self) -> pd.DataFrame:
-        
         """
         :description: This method retrieves pre-processed data from a .csv file located on the disk.
         :parameters: None
         :return: A data frame with pre-processed data
         :rtype: Pandas DataFrame        
         """
-            
+
         data = pd.read_csv(self.input_path)
-        #logger.info(f'lets see the file: \n {data.head()} ')
-        return data    
+        # logger.info(f'lets see the file: \n {data.head()} ')
+        return data
 
     def model_training(self, df: pd.DataFrame):
         """
@@ -57,15 +57,15 @@ class ModelTrainingPipeline(object):
         logger.info('Training model...')
         model = LinearRegression()
 
-        train_data = df[df['Set']=='train']
-        test_data = df[df['Set']=='test']
+        train_data = df[df['Set'] == 'train']
+        test_data = df[df['Set'] == 'test']
 
-        x_train = train_data.drop(['Item_Outlet_Sales','Set'], axis=1).copy()
+        x_train = train_data.drop(['Item_Outlet_Sales', 'Set'], axis=1).copy()
         y_train = train_data[['Item_Outlet_Sales']].copy()
-        x_val = test_data.drop(['Item_Outlet_Sales','Set'], axis=1).copy()
+        x_val = test_data.drop(['Item_Outlet_Sales', 'Set'], axis=1).copy()
 
-        # Model training 
-        model.fit(x_train,y_train)
+        # Model training
+        model.fit(x_train, y_train)
 
         # A prediction from the fitted model for the validation set is made to get an idea of its performance.
         pred = model.predict(x_val)
@@ -74,7 +74,8 @@ class ModelTrainingPipeline(object):
         mse_train = metrics.mean_squared_error(y_train, model.predict(x_train))
         R2_train = model.score(x_train, y_train)
         logger.info('Model metrics:')
-        logger.info('TRAINING: RMSE: {:.2f} - R2: {:.4f}'.format(mse_train**0.5, R2_train))
+        logger.info(
+            'TRAINING: RMSE: {:.2f} - R2: {:.4f}'.format(mse_train**0.5, R2_train))
 
         # mse_val = metrics.mean_squared_error(y_val, pred)
         # R2_val = model.score(x_val, y_val)
@@ -84,12 +85,12 @@ class ModelTrainingPipeline(object):
         logger.info(f'Intercept: {model.intercept_}')
 
         # Model Coefficients
-        #coef = pd.DataFrame(x_train.columns, columns=['features'])
-        #coef['Estimated Coeficients'] = model.coef_.reshape[-1,1]
+        # coef = pd.DataFrame(x_train.columns, columns=['features'])
+        # coef['Estimated Coeficients'] = model.coef_.reshape[-1,1]
         logger.info(f'Coefficients: {model.coef_[0]}')
-        #coef.sort_values(by='Estimated Coeficients').set_index('features').plot(kind='bar', title='Variable Importance', figsize=(12, 6))
-        #plt.show()        
-        return model 
+        # coef.sort_values(by='Estimated Coeficients').set_index('features').plot(kind='bar', title='Variable Importance', figsize=(12, 6))
+        # plt.show()
+        return model
 
     def model_dump(self, model_trained) -> None:
         """
@@ -104,7 +105,7 @@ class ModelTrainingPipeline(object):
             pickle.dump(model_trained, model_file)
 
     def run(self):
-    
+
         logger.info('Reading preprocessed data to be trained...')
         df = self.read_data()
         model_trained = self.model_training(df)

@@ -21,7 +21,7 @@ from steps import predict
 import utils as u
 
 if __name__ == "__main__":
-    
+
     parser = argparse.ArgumentParser(
         description="Script that runs the prediction of the model")
 
@@ -38,7 +38,6 @@ if __name__ == "__main__":
         type=str,
         help="input test path",
         required=False)
-    
 
     parser.add_argument(
         "-o",
@@ -47,14 +46,14 @@ if __name__ == "__main__":
         type=str,
         help="output path",
         required=True)
-    
+
     parser.add_argument(
         "-m",
         "--model",
         type=str,
         help="model path",
         required=True)
-    
+
     parser.add_argument(
         "-p",
         "--make_prediction",
@@ -68,8 +67,9 @@ if __name__ == "__main__":
     input_train, input_test, output, model, pred = args.input_train, args.input_test, args.output, args.model, args.make_prediction
     logger = u.make_logger(__name__)
 
-    feat.FeatureEngineeringPipeline(input_train_path = input_train,
-                               input_test_path = input_test,
-                               output_path = output).run()
-    
-    predict.MakePredictionPipeline(input_path=output,output_path=pred,model_path=model).run()
+    feat.FeatureEngineeringPipeline(input_train_path=input_train,
+                                    input_test_path=input_test,
+                                    output_path=output).run()
+
+    predict.MakePredictionPipeline(
+        input_path=output, output_path=pred, model_path=model).run()

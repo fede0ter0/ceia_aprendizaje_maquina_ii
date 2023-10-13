@@ -21,7 +21,7 @@ import steps.train as train
 import utils as u
 
 if __name__ == "__main__":
-    
+
     parser = argparse.ArgumentParser(
         description="Script that runs the training of the model")
 
@@ -38,7 +38,6 @@ if __name__ == "__main__":
         type=str,
         help="input test path",
         required=False)
-    
 
     parser.add_argument(
         "-o",
@@ -47,7 +46,7 @@ if __name__ == "__main__":
         type=str,
         help="output path",
         required=True)
-    
+
     parser.add_argument(
         "-m",
         "--model",
@@ -57,9 +56,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     input_train, input_test, output, model = args.input_train, args.input_test, args.output, args.model
-    logger = u.make_logger(__name__)    
-    feat.FeatureEngineeringPipeline(input_train_path = input_train,
-                               input_test_path = input_test,
-                               output_path = output).run()
-    
-    train.ModelTrainingPipeline(output,model).run()
+    logger = u.make_logger(__name__)
+    feat.FeatureEngineeringPipeline(input_train_path=input_train,
+                                    input_test_path=input_test,
+                                    output_path=output).run()
+
+    train.ModelTrainingPipeline(output, model).run()
