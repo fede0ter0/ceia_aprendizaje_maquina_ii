@@ -38,7 +38,7 @@ Y cargamos las librerías
 
 #### Ejecución de los pipelines
 
-Como veremos, ambos pipelines utilizar un logger para ir haciendo un seguimiento controloado de los pasos en cada proceso de ejecución. 
+Como veremos, ambos pipelines utilizar un logger para ir haciendo un seguimiento controlado de los pasos en cada proceso de ejecución. 
 
 Para ejecutar el entrenamiento del modelo, veamos un ejemplo corrido desde la consola:
 
